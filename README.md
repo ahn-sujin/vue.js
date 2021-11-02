@@ -5,7 +5,7 @@
 <br>
 
 ## ✅vue
- * **[인스턴스 & 컴포넌트](../TIL/vue01.md)**
+ * **[인스턴스 & 컴포넌트](https://github.com/ahn-sujin/TIL/blob/main/vue01.md)**
 
 <br>
 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 라우터 실습02 - 내스티드 라우터</title>
+</head>
+<body>
+    <div id="app">
+        <!-- URL 값에 따라 갱신되는 화면 영역 -->
+        <router-view></router-view><!-- user 컴포넌트가 뿌려질 영역 -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 라우터 CDN -->
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+
+    <script>
+        // ====== 컴포넌트 내용 정의 S ====== //
+        var User = {
+            template : `
+                <div>
+                    User Comonent
+                    <router-view></router-view>  
+                </div>
+            `
+        };
+        var UserProfile = { template: '<p>User Profile Component</p>' };
+        var UserPost = { template: '<p>User Post Component</p>' };
+        // ====== 컴포넌트 내용 정의 E ====== //
+
+
+
+        // ====== 네스티드 라우팅 정의 S ====== //
+        var routes = [
+            {
+                path:'/user',
+                component: User,
+                children: [
+                    {
+                        path: 'posts',
+                        component : UserPost
+                    }, 
+                    {
+                        path: 'profile',
+                        component : UserProfile
+                    },
+                ]
+            }  
+        ];
+        // ====== 네스티드 라우팅 정의 E ====== //
+
+
+
+        // ====== 뷰 라우터 정의 S ====== //
+        var router = new VueRouter({
+            routes
+        });
+        // ====== 뷰 라우터 정의 E ====== //
+
+
+
+        // ====== 뷰 인스턴스에 라우처 추가 S ====== //
+        var app = new Vue({
+            router
+        }).$mount('#app');
+        // ====== 뷰 인스턴스에 라우처 추가 E ====== //
+    </script>
+    
+</body>
+</html>

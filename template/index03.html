@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+</head>
+<body>
+    <div id="app">
+        <a v-if="flag">두잇 vue</a>
+        <ul>
+            <li v-for="system in systems">{{ system }}</li>
+            <!-- v-for = "아이템명 in array" -->
+        </ul>
+        <p v-show="flag">두잇 vue</p>
+        <h5 v-bind:id = "uid">뷰 입문서</h5>
+        <!-- v-bind:속성 = "속성이름" -->
+        <button v-on:click = "popupAlert">경고 창 버튼</button>
+        <!-- v-on:이벤트이름 = "메소드이름" -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({ 
+            el:'#app',
+            data: {
+                flag:true,
+                systems : ['andoroid', 'ios', 'window'],
+                uid: 10
+            },
+            methods : {
+                popupAlert : function() {
+                    return alert('경고 창 표시');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
